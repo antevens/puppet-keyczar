@@ -5,7 +5,7 @@ class python_keyczar(
   file { $keyczart_binary:
     ensure => file,
     mode => 0777,
-    source => "puppet:///modules/keyczar/keyczart",
+    source => "puppet:///modules/python_keyczar/keyczart",
     replace => false
   }
 }

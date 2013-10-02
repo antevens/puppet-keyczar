@@ -1,7 +1,7 @@
 class keyczar(
   $keyczart_binary='/usr/bin/keyczart',
 ) {
-
+  package { 'python-keyczar': ensure => latest }
   file { $keyczart_binary:
     ensure => file,
     mode => 0777,

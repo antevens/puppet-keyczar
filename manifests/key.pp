@@ -1,4 +1,4 @@
-define keyczar::key (
+define python_keyczar::key (
   $ensure=present
   $key_desc='Keyczart Key',
   $key_size=256
@@ -25,19 +25,19 @@ define keyczar::key (
 
     exec { 'keyczar_create_key':
       creates => "${meta_file}",
-      command => "${keyczar::keyczart_binary} create --location='${key_dir}' --purpose=crypt --name='${key_desc}'",
+      command => "${python_keyczar::keyczart_binary} create --location='${key_dir}' --purpose=crypt --name='${key_desc}'",
     }
 
     exec { 'keyczar_add_key':
       creates => "${key_file}",
-      command => "${keyczar::keyczart_binary} addkey --location='${key_dir}' --size=${key_size}",
+      command => "${python_keyczar::keyczart_binary} addkey --location='${key_dir}' --size=${key_size}",
       require => Exec['keyczar_create_key'],
     }
 
     exec { 'keyczar_promote_key':
       # Only run when key has been generated for now assume only 1 version
       # Can extend to handle revoke and multiple verions, etc
-      command => "${keyczar::keyczart_binary} promote --location='${key_dir}' --version=${version}",
+      command => "${python_keyczar::keyczart_binary} promote --location='${key_dir}' --version=${version}",
       subscribe  => File[ $key_file ],
       refreshonly => true,
     }

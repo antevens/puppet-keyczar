@@ -1,4 +1,4 @@
-class keyczar(
+class python_keyczar(
   $keyczart_binary='/usr/bin/keyczart',
 ) {
   package { 'python-keyczar': ensure => latest }

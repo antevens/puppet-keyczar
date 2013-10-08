@@ -26,11 +26,14 @@ define python_keyczar::key (
       }
     )
 
-    # Specify symlinks to create/replace
-    file { $symlinks:
-      ensure => "link",
-      target => "${key_dir}",
-      replace => $replace_symlinks, # Overwrite existing symlink or not
+    # If any symlinks were specified we create them
+    if count($symlinks) > 0 {
+      # Specify symlinks to create/replace
+      file { $symlinks:
+        ensure => "link",
+        target => "${key_dir}",
+        replace => $replace_symlinks, # Overwrite existing symlink or not
+      }
     }
 
     exec { 'keyczar_create_key':

@@ -6,6 +6,8 @@ define python_keyczar::key (
   $owner='root',
   $group='root',
   $purpose='crypt'
+  $symlinks=[],
+  $replace_symlinks=false,
 ) {
   # Create a keyczar pair
   if $ensure == present {
@@ -23,6 +25,13 @@ define python_keyczar::key (
         'mode' => 2770,
       }
     )
+
+    # Specify symlinks to create/replace
+    file { $symlinks:
+      ensure => "link",
+      target => "${key_dir}",
+      replace => $replace_symlinks, # Overwrite existing symlink or not
+    }
 
     exec { 'keyczar_create_key':
       creates => "${meta_file}",

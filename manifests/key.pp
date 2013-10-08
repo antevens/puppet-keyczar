@@ -27,7 +27,8 @@ define python_keyczar::key (
     )
 
     # If any symlinks were specified we create them
-    if count($symlinks) > 0 {
+    # Special handling since symlinks can be string or array
+    if count(flatten([$symlinks])) > 0 {
       # Specify symlinks to create/replace
       file { $symlinks:
         ensure => "link",

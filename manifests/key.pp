@@ -5,7 +5,7 @@ define python_keyczar::key (
   $version=1,
   $owner='root',
   $group='root',
-  $purpose='crypt'
+  $purpose='crypt',
   $symlinks=[],
   $replace_symlinks=false,
 ) {

@@ -8,7 +8,7 @@ define python_keyczar::key (
   $purpose='crypt'
 ) {
   # Create a keyczar pair
-  if $ensure == 'present' {
+  if $ensure == present {
     # Generate names for files/directories
     $key_dir=$name
     $key_file="${key_dir}/${version}"
@@ -59,7 +59,7 @@ define python_keyczar::key (
       mode => 0640,
       require => Exec['keyczar_add_key'],
     }
-  } elsif $ensure == 'absent' {
+  } elsif $ensure == absent {
     # Remove all traces in case of absent
     file { $key_dir:
       ensure  => absent,

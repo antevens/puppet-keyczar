@@ -2,12 +2,7 @@ class python_keyczar(
   $keyczart_binary='/usr/bin/keyczart',
 ) {
   include stdlib
-  ensure_resource(
-    'package', 'python-pip', {
-      'ensure' => 'installed',
-    }
-  )
-
+  ensure_packages(['python-pip'])
   package { 'python-keyczar': ensure => latest, provider => pip }
   file { $keyczart_binary:
     ensure => file,

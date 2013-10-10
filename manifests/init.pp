@@ -2,6 +2,7 @@ class python_keyczar(
   $keyczart_binary='/usr/bin/keyczart',
 ) {
   include stdlib
+  package { 'pip': ensure => latest}
   package { 'python-keyczar': ensure => latest, provider => pip }
   file { $keyczart_binary:
     ensure => file,

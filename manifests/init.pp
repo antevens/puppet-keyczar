@@ -4,7 +4,7 @@ class python_keyczar(
   include stdlib
   ensure_resource(
     'package', 'python-pip', {
-      'ensure' => 'latest',
+      'ensure' => 'installed',
     }
   )
 

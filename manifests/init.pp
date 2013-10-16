@@ -5,7 +5,7 @@ class python_keyczar(
   ensure_packages(['python-pip'])
   package { 'python-keyczar': 
     ensure => latest, 
-    provider => pip
+    provider => pip,
     require => Package['python-pip'],
   }
   file { $keyczart_binary:

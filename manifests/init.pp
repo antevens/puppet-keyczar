@@ -3,7 +3,11 @@ class python_keyczar(
 ) {
   include stdlib
   ensure_packages(['python-pip'])
-  package { 'python-keyczar': ensure => latest, provider => pip }
+  package { 'python-keyczar': 
+    ensure => latest, 
+    provider => pip
+    require => Package['python-pip'],
+  }
   file { $keyczart_binary:
     ensure => file,
     mode => 0777,

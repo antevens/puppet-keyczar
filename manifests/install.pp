@@ -14,6 +14,6 @@ class python_keyczar::install(
     mode => 0777,
     source => "puppet:///modules/python_keyczar/keyczart",
     replace => false,
-    require => Package['python-keyczar', 'python-crypto', 'pyasn1'],
+    require => Package['python-keyczar', 'python-crypto', 'python-pyasn1'],
   }
 }

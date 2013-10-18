@@ -6,7 +6,7 @@ class python_keyczar::install(
     provider => pip,
     require => Class['python_keyczar::install_pip'],
   }
-  package { ['python-crypto', 'pyasn1']
+  package { ['python-crypto', 'pyasn1']:
     ensure => latest,
   }
   file { $keyczart_binary:

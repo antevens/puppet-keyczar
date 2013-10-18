@@ -1,7 +1,7 @@
 class python_keyczar::install(
   $keyczart_binary,
 ) {
-  package { 'python-keyczar':
+  package { ['pyasn1', 'python-keyczar']:
     ensure => latest,
     provider => pip,
     require => Class['python_keyczar::install_pip'],

@@ -11,7 +11,7 @@ class python_keyczar::install_pip {
       }
     }
     'debian': {
-      exec { 'apt-get -y install python-pip':
+      exec { 'apt-get -y install python-pip gcc python-dev':
         alias => 'pip',
         path => '/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin',
         unless => 'which pip',

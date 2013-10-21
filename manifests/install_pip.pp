@@ -4,14 +4,14 @@ class python_keyczar::install_pip {
   # provider (package provider)
   case $::osfamily {
     'redhat': {
-      exec { 'yum install python-pip':
+      exec { 'yum -y install python-pip':
         alias => 'pip',
         path => '/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin',
         unless => 'which pip',
       }
     }
     'debian': {
-      exec { 'apt-get install python-pip':
+      exec { 'apt-get -y install python-pip':
         alias => 'pip',
         path => '/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin',
         unless => 'which pip',

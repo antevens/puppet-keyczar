@@ -1,10 +1,10 @@
 class python_keyczar::install_pip {
   # Make sure Pip is installed without conflicting with other modules
-  # Would use stdlib ensure_package but it does not work due to PIP being a 
+  # Would use stdlib ensure_package but it does not work due to PIP being a
   # provider (package provider)
   case $::osfamily {
     'redhat': {
-      exec { 'yum -y install python-pip':
+      exec { 'yum -y install python-pip gcc':
         alias => 'pip',
         path => '/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin',
         unless => 'which pip',

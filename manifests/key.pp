@@ -34,6 +34,7 @@ define python_keyczar::key (
         ensure => "link",
         target => "${key_dir}",
         replace => $replace_symlinks, # Overwrite existing symlink or not
+        force => false,
         backup => true, # Back up existing file to same directory ${file_name}.puppet-bak
       }
     }

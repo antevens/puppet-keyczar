@@ -25,8 +25,10 @@ Creating Keyczar keys
 First you need to initialize the keyczar class::
     class { "keycar": }
 
+
 You create a new key with the ``keyczar::key`` resource like this::
-    # Set up Keyczar key(s)
+
+# Set up Keyczar key(s)
     python_keyczar::key { $sde_keyczar_dir:
       key_desc => "Key for ${fqdn}",
       owner => 'root',

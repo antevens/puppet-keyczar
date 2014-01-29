@@ -8,6 +8,7 @@ class python_keyczar::install_pip {
         alias => 'pip',
         path => '/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin',
         unless => 'which pip',
+        depends => Class['yum'],
       }
     }
     'debian': {
